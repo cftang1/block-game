@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <title>Document</title>
+  </head> 
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    canvas {
+      margin-top: 1%;
+      display: inline;
+    }
+    #preview,
+    #hold {
+      /* vertical-align: top; */
+      text-align: right;
+    }
+    #hold {
+      height: 20vh;
+    }
+    #preview {
+      height: 50vh;
+    }
+    #tetris {
+      height: 90vh;
+    }
+    #timer {
+      margin-left: 70px;
+      /* margin-bottom: 50%; */
+    }
+    #stats {
+      margin-top: 25px;
+    }
+    html,
+    body {
+      height: 100%;
+    }
+    html {
+      display: table;
+      margin: auto;
+    }
+    body {
+      font-family: 'Roboto Mono', monospace;
+      background-color: #343442;
+      color: floralwhite;
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .grid-item1 {
+      margin: 1%;
+      justify-self: end;
+    }
+    .grid-item2 {
+      margin: 1%;
+      justify-self: center;
+    }
+    .grid-item3 {
+      margin: 1%;
+      justify-self: start;
+    }
+    #overlay {
+      position: fixed; /* Sit on top of the page content */
+      display: none; /* Hidden by default */
+      width: 100%; /* Full width (cover the whole page) */
+      height: 100%; /* Full height (cover the whole page) */
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+      z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+      cursor: pointer; /* Add a pointer on hover */
+    }
+    #pauseText{
+      text-align: center;
+      vertical-align: middle;
+    }
+  </style>
+  <body>
+    <div id="overlay" onclick="togglePause()">
+      <div id="pauseText">Paused
+        <div>
+          <h1>
+            Controls
+          </h1>
+          <p>
+            Left/Right arrows = Left & Right<br />
+            Up arrow = Rotate clockwise<br />
+            down arrow = Soft drop<br />
+            space = hard drop<br />
+            z = Rotate anti-clockwise<br />
+            p = Pause<br />
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="grid-container" id="playArea">
+      <div class="grid-item1">
+        <canvas id="hold" width="60" height="60"></canvas>
+        <div id="stats">
+          Highscore: 0 <br />
+          Score: 0 <br />
+          Level: 1 <br />
+          Lines Cleared: 0<br />
+        </div>
+      </div>
+      <div class="grid-item2">
+        <canvas id="tetris" width="240" height="400"></canvas>
+      </div>
+      <div class="grid-item3">
+        <canvas id="preview" width="60" height="240"></canvas>
+      </div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+
+      <div id="timer">Time: 0</div>
+
+      
+    <!-- <script type="text/javascript" src="jquery.hammer.js"></script> -->
+  </body>
+  <script type="text/javascript" src="hammer.js"></script>
+  <script type="text/javascript" src="tetris.js"></script>
+</html>
